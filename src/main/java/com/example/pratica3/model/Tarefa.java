@@ -3,16 +3,18 @@ package com.example.pratica3.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
 @Data
-@Entity // Para bancos relacionais
+@Document(collection = "tarefas") // Para MongoDB
 public class Tarefa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Para bancos relacionais
-    private Long id;
+    private long id;
 
     @NotNull
     @Size(min = 3, max = 100)
